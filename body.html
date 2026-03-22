@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI Fraud Shield - Advanced Detection System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="dashboard">
+    <div class="header card">
+        <h1>🛡️ UPI Fraud Shield</h1>
+        <p style="color: #64748b; margin: 10px 0 0 0; font-size: 1.1em;">Advanced AI-Powered Fraud Detection</p>
+    </div>
+
+    <div class="card">
+        <h2>🔍 Smart Scanner</h2>
+        <label>📱 UPI ID:</label>
+        <input type="text" id="upi" placeholder="user@paytm">
+        <label>💰 Amount (₹):</label>
+        <input type="number" id="amount" min="1">
+        <label>📍 Location:</label>
+        <input type="text" id="location" placeholder="Delhi">
+        <button onclick="sendOTP()">📤 Send OTP</button>
+        <label>🔑 OTP:</label>
+        <input type="text" id="otp" maxlength="4">
+        <button onclick="verifyOTP()">✅ Verify</button>
+        <button onclick="checkFraud()">🚨 Analyze</button>
+        <div id="result"></div>
+        <div style="padding-top: 20px; font-size: 12px; color: #64748b;">
+            <strong>💡 Tip:</strong> Enter UPI ID and amount to check fraud risk
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📸 Screenshot Scanner</h2>
+        <input type="file" id="screenshot" accept="image/*" onchange="scanScreenshot(event)">
+        <div id="scanResult" style="margin-top: 15px; min-height: 60px;"></div>
+        <div style="font-size: 12px; color: #64748b; margin-top: 10px; padding: 10px; background: rgba(79,70,229,0.1); border-radius: 8px;">
+            📱 <strong>WhatsApp Forward:</strong> Screenshot → Upload → Instant Analysis
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🚨 Report Fraud</h2>
+        <button onclick="showReportForm()">+ New Report</button>
+        <div id="reportForm" style="display:none; margin-top:15px;">
+            <label>Scam UPI:</label>
+            <input type="text" id="fraudUpi">
+            <label>Details:</label>
+            <textarea id="fraudDesc" rows="2" placeholder="Describe the scam..."></textarea>
+            <button class="primary" onclick="submitFraudReport()">✅ Submit (+50 pts)</button>
+        </div>
+        <div id="fraudList" style="margin-top:15px; min-height: 80px;"></div>
+    </div>
+
+    <div class="card">
+        <h2>🌐 Fraud Networks</h2>
+        <div id="networkGraph" style="min-height: 120px;"></div>
+        <div style="font-size: 12px; color: #64748b; padding-top: 10px; border-top: 1px solid #e5e7eb; margin-top: 10px;">
+            👆 Click nodes to auto-check connected scammers
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Live Alerts</h2>
+        <div id="predictions" style="min-height: 100px;"></div>
+        <div style="font-size: 12px; color: #64748b; margin-top: 10px;">
+            🔄 Updates every 25 seconds automatically
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🏆 Leaderboard</h2>
+        <div id="leaderboard" class="leaderboard">
+            <div class="leaderboard-scroll" id="leaderScroll"></div>
+        </div>
+        <div style="margin-top: 15px; text-align: center; padding: 10px; background: rgba(124,58,237,0.1); border-radius: 8px;">
+            You: <span id="userScore" style="font-weight: bold; color: #7c3aed; font-size: 18px;">0</span> pts
+        </div>
+    </div>
+</div>
+
+<button id="voiceControl" onclick="startVoiceControl()" title="Voice Commands">🎤</button>
+
+<script src="index.js"></script>
+
+</body>
+</html>
